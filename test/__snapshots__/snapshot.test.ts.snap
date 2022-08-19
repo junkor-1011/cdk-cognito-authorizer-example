@@ -47,7 +47,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "d0d9d30a0fc8a09a2ffab71857c7e38ba85c055d4a64e95f8bf1ff880beec5b2.zip",
+          "S3Key": "01ef5e749c0ae095fcb5ec0adcaeacbb0de1b04e63ac03eeb945014ebfe18eac.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -146,6 +146,7 @@ Object {
       "Type": "AWS::Cognito::UserPoolClient",
     },
     "helloApigatewayAccountD0841D91": Object {
+      "DeletionPolicy": "Retain",
       "DependsOn": Array [
         "helloApigatewayD1490B0F",
       ],
@@ -158,8 +159,10 @@ Object {
         },
       },
       "Type": "AWS::ApiGateway::Account",
+      "UpdateReplacePolicy": "Retain",
     },
     "helloApigatewayCloudWatchRole4D45C3C0": Object {
+      "DeletionPolicy": "Retain",
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [
@@ -189,6 +192,7 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Retain",
     },
     "helloApigatewayD1490B0F": Object {
       "Properties": Object {
@@ -398,7 +402,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "a7be855f0aa7f8abe4a378fb16c3a14b0a1800ea6800434bdf9afab7fe6838cc.zip",
+          "S3Key": "98e5402f5cb6af156c6f350169244e271c03e96f2e81189fa2e8fc1a4787b5a4.zip",
         },
         "Environment": Object {
           "Variables": Object {
