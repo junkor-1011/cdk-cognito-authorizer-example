@@ -12,6 +12,8 @@ import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as ssm from 'aws-cdk-lib/aws-ssm';
 
+const ProjectParamPrefix = 'TESTAPPX'; // TMP
+
 type StageStackProps = StackProps & {
   stageName: string;
 };
@@ -185,56 +187,56 @@ export class TestAppStack extends Stack {
 
     // SSM Parameteres
     new ssm.StringParameter(this, `poolid-${props.stageName}`, {
-      parameterName: `/TESTAPPX/${props.stageName}/COGNITO_POOL_ID`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/COGNITO_POOL_ID`,
       stringValue: pool.userPoolId,
       type: ssm.ParameterType.STRING,
     });
     new ssm.StringParameter(this, `poolclientid-${props.stageName}`, {
-      parameterName: `/TESTAPPX/${props.stageName}/COGNITO_POOL_CLIENT_ID`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/COGNITO_POOL_CLIENT_ID`,
       stringValue: client.userPoolClientId,
       type: ssm.ParameterType.STRING,
     });
     new ssm.StringParameter(this, `poolclient-domainname-${props.stageName}`, {
-      parameterName: `/TESTAPPX/${props.stageName}/COGNITO_POOL_CLIENT_DOMAN_NAME`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/COGNITO_POOL_CLIENT_DOMAN_NAME`,
       stringValue: domain.domainName,
       type: ssm.ParameterType.STRING,
     });
     new ssm.StringParameter(this, `poolclient-domainurl-${props.stageName}`, {
-      parameterName: `/TESTAPPX/${props.stageName}/COGNITO_POOL_CLIENT_DOMAN_URL`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/COGNITO_POOL_CLIENT_DOMAN_URL`,
       stringValue: `https://${domain.domainName}.auth.${Aws.REGION}.amazoncognito.com`,
       type: ssm.ParameterType.STRING,
     });
     /*
     new ssm.StringParameter(this, `poolclient-secret-${props.stageName}`, {
-      parameterName: `/TESTAPPX/${props.stageName}/COGNITO_POOL_CLIENT_SECRET`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/COGNITO_POOL_CLIENT_SECRET`,
       stringValue: client.userPoolClientSecret.unsafeUnwrap(),
       type: ssm.ParameterType.SECURE_STRING,
     });
     */
 
     new ssm.StringParameter(this, `audience-${props.stageName}`, {
-      parameterName: `/TESTAPPX/${props.stageName}/AUDIENCE`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/AUDIENCE`,
       stringValue: client.userPoolClientId,
       type: ssm.ParameterType.STRING,
     });
     new ssm.StringParameter(this, `issuer-${props.stageName}`, {
-      parameterName: `/TESTAPPX/${props.stageName}/ISSUER`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/ISSUER`,
       stringValue: `https://cognito-idp.${Aws.REGION}.amazonaws.com/${pool.userPoolId}`,
       type: ssm.ParameterType.STRING,
     });
     new ssm.StringParameter(this, `jwksuri-${props.stageName}`, {
-      parameterName: `/TESTAPPX/${props.stageName}/JWKS_URI`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/JWKS_URI`,
       stringValue: `https://cognito-idp.${Aws.REGION}.amazonaws.com/${pool.userPoolId}/.well-known/jwks.json`,
       type: ssm.ParameterType.STRING,
     });
 
     new ssm.StringParameter(this, `restapiId-${props.stageName}`, {
-      parameterName: `/TESTAPPX/${props.stageName}/REST_API_ID`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/REST_API_ID`,
       stringValue: api.restApiId,
       type: ssm.ParameterType.STRING,
     });
     new ssm.StringParameter(this, `restapiUrl-${props.stageName}`, {
-      parameterName: `/TESTAPPX/${props.stageName}/REST_API_BASE_URL`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/REST_API_BASE_URL`,
       stringValue: api.url,
       type: ssm.ParameterType.STRING,
     });
