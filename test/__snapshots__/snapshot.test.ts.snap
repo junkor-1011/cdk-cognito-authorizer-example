@@ -36,6 +36,10 @@ Object {
       "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
       "Type": "AWS::SSM::Parameter::Value<String>",
     },
+    "poolclientdomainnameParameter": Object {
+      "Default": "/TESTAPPX/test/COGNITO_POOL_CLIENT_DOMAIN_NAME",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
   },
   "Resources": Object {
     "AcceptTest7B7FF621": Object {
@@ -517,7 +521,9 @@ Object {
     },
     "PoolCognitoDomainC3A3EAD2": Object {
       "Properties": Object {
-        "Domain": "super-ultra-hyper-extreme-temporary-app",
+        "Domain": Object {
+          "Ref": "poolclientdomainnameParameter",
+        },
         "UserPoolId": Object {
           "Ref": "PoolD3F588B8",
         },
@@ -1248,19 +1254,9 @@ Object {
       },
       "Type": "AWS::SSM::Parameter",
     },
-    "poolclientdomainnametest6C45716A": Object {
-      "Properties": Object {
-        "Name": "/TESTAPPX/test/COGNITO_POOL_CLIENT_DOMAN_NAME",
-        "Type": "String",
-        "Value": Object {
-          "Ref": "PoolCognitoDomainC3A3EAD2",
-        },
-      },
-      "Type": "AWS::SSM::Parameter",
-    },
     "poolclientdomainurltest0E5C5DDA": Object {
       "Properties": Object {
-        "Name": "/TESTAPPX/test/COGNITO_POOL_CLIENT_DOMAN_URL",
+        "Name": "/TESTAPPX/test/COGNITO_POOL_CLIENT_DOMAIN_URL",
         "Type": "String",
         "Value": Object {
           "Fn::Join": Array [

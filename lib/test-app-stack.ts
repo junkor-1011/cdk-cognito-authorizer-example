@@ -44,10 +44,12 @@ export class TestAppStack extends Stack {
       generateSecret: true,
       refreshTokenValidity: Duration.hours(12),
     });
+    const domainName = ssm.StringParameter.fromStringParameterAttributes(this, 'poolclient-domainname', {
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/COGNITO_POOL_CLIENT_DOMAIN_NAME`,
+    }).stringValue;
     const domain = pool.addDomain('CognitoDomain', {
       cognitoDomain: {
-        // TODO: SHOULD GET VALUE FROM SSM PARAMETER OR SECRETS MANAGER
-        domainPrefix: 'super-ultra-hyper-extreme-temporary-app', // TMP
+        domainPrefix: domainName,
       },
     });
 
@@ -196,13 +198,15 @@ export class TestAppStack extends Stack {
       stringValue: client.userPoolClientId,
       type: ssm.ParameterType.STRING,
     });
+    /*
     new ssm.StringParameter(this, `poolclient-domainname-${props.stageName}`, {
-      parameterName: `/${ProjectParamPrefix}/${props.stageName}/COGNITO_POOL_CLIENT_DOMAN_NAME`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/COGNITO_POOL_CLIENT_DOMAIN_NAME`,
       stringValue: domain.domainName,
       type: ssm.ParameterType.STRING,
     });
+    */
     new ssm.StringParameter(this, `poolclient-domainurl-${props.stageName}`, {
-      parameterName: `/${ProjectParamPrefix}/${props.stageName}/COGNITO_POOL_CLIENT_DOMAN_URL`,
+      parameterName: `/${ProjectParamPrefix}/${props.stageName}/COGNITO_POOL_CLIENT_DOMAIN_URL`,
       stringValue: `https://${domain.domainName}.auth.${Aws.REGION}.amazoncognito.com`,
       type: ssm.ParameterType.STRING,
     });
