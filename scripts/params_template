@@ -1,0 +1,7 @@
+# EXAMPLE VALUES
+
+AWS_PROFILE="default"
+REGION="ap-northeast-1"
+STAGE="Dev"
+COGNITO_POOL_CLIENT_DOMAIN_NAME="super-ultra-hyper-marvelous-temp-test-exam-app"
+
