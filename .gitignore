@@ -3,6 +3,7 @@
 !.prettierrc.js
 !.eslintrc.js
 *.d.ts
+!@types/*.d.ts
 node_modules
 
 # CDK asset staging directory
