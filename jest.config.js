@@ -3,6 +3,14 @@ module.exports = {
   roots: ['<rootDir>/test', '<rootDir>/functions'],
   testMatch: ['**/*.test.ts'],
   transform: {
-    '^.+\\.tsx?$': 'esbuild-jest',
+    '^.+\\.tsx?$': [
+      '@swc/jest',
+      {
+        sourceMaps: true,
+        module: {
+          type: 'commonjs',
+        },
+      },
+    ],
   },
 };
