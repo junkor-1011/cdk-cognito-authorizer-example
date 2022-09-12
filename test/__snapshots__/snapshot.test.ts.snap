@@ -172,7 +172,7 @@ exports[`snapshot test TestApp Stack's Snapshot test 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "06c70b9cc5686a42b3f42f5d0db72a07f90ab0428187a62e4e396c31e0068593.zip",
+          "S3Key": "ffc0999cf3b8e71ee35b955c38b08839922f8642c3316683dbd34c4f1433d618.zip",
         },
         "Environment": {
           "Variables": {
@@ -396,7 +396,7 @@ exports[`snapshot test TestApp Stack's Snapshot test 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "8d74566e4bc2fb7bc81927f2972a4aa8672e128d4df3c78d7fad3c412de9006d.zip",
+          "S3Key": "8472999025628dd914f0f2f2778e8f9b69fe79ca2bfbfd6b0ac68de64dac7b9f.zip",
         },
         "Environment": {
           "Variables": {
